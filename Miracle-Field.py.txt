@@ -1,0 +1,118 @@
+ispolsovannie_bukvi = set()
+print("Привет, человек! Сыграй в мою игру. Название я еще не придумал.")     
+print("Что? Просто так не хочешь играть? Ну, тогда сыграем на жвачку.")
+print("Я загадаю слово, а ты должен будешь его угадывать по букве.") 
+print("За сколько попыток ты угадаешь? Решать тебе: ")
+kolvo_popitok = int(input())
+print(kolvo_popitok)
+print("Если ты не угадаешь... Ладно, сечас не об этом. Да начнется игра!!!")
+schetchik = 0
+slovo_atalon = ""
+slovo = ""
+vse_slova = set()
+vse_slova = {"морж"}     ###МНОЖЕСТВА С ЗАГАДАННЫМИ СЛОВАМИ
+zagadannoe_slovo = vse_slova.pop()
+slovo_atalon = "*" * len(zagadannoe_slovo)
+print(slovo_atalon)                            ###ЗАШИФРОВАННОЕ СЛОВО               
+print("Попробуй угадать букву: ")
+bukva = input()
+bukvi_zagadannogo_slova = set()
+###СОЗДАНИЕ МНОЖЕСТВА С БУКВАМИ НИЖНЕГО И ВЕРХНЕГО РЕГИСТРА ЗАГАДАННОГО СЛОВА
+for i in zagadannoe_slovo:                           
+    if 64 < ord(i) < 91:                                       
+        bukvi_zagadannogo_slova.add(i)
+        bukvi_zagadannogo_slova.add(chr(ord(i) + 32))           
+    else:
+        bukvi_zagadannogo_slova.add(i)
+        bukvi_zagadannogo_slova.add(chr(ord(i) - 32))
+###ОСНОВНОЙ ЦИКЛ
+while kolvo_popitok != 0 or slovo_atalon != zagadannoe_slovo:
+    ###ПРОВЕРКА НА РУССКEУЮ БУКВУ
+    if 1039 < ord(bukva) < 1104:
+        ###ВВОД БУКВЫ, КОТОРУЮ УЖЕ ПЕЧАТАЛ
+        if bukva in ispolsovannie_bukvi:              
+            print(bukva)
+            print("Ты уже использовал эту букву. Скажи, в чем смысл ВВОДИТЬ ОДНУ И ТУ ЖЕ БУКВУ?!")
+            print(slovo_atalon)
+            print("Постарайся вспомнить еще какую-нибудь букву из алфавита:")
+            bukva = input()
+        ###ПРОВЕРКА ВВОДА 1 БУКВЫ
+        elif len(bukva) > 1:                                          
+            print(bukva)
+            print("Ты ввел больше, чем одну букву. НАРУШЕНИЕ ПРАВИЛ!!!")
+            print(slovo_atalon)
+            print("Попытайся ввести ОДНУ букву. Это что, так сложно?")
+            bukva = input()        
+        ###УГАДАЛ
+        elif bukva in bukvi_zagadannogo_slova:                      
+            print("Так... Похоже, что ты угадал.")
+            if 1039 < ord(bukva) < 1072:
+                ispolsovannie_bukvi.add(bukva)
+                ispolsovannie_bukvi.add(chr(ord(bukva) + 32))
+                bukvi_zagadannogo_slova.remove(bukva)                  
+                bukvi_zagadannogo_slova.remove(chr(ord(bukva) + 32))
+                for j in zagadannoe_slovo:                      
+                    if chr(ord(bukva) + 32) == j:
+                        slovo += chr(ord(bukva) + 32)
+                        schetchik += 1
+                    elif 1039 < ord(slovo_atalon[schetchik]) < 1104:
+                        slovo += (slovo_atalon[schetchik])
+                        schetchik += 1
+                    else:
+                        slovo += "*" 
+                        schetchik += 1
+                slovo_atalon = slovo
+                slovo = ""
+            else:
+                ispolsovannie_bukvi.add(bukva)
+                ispolsovannie_bukvi.add((chr(ord(bukva) - 32)))
+                bukvi_zagadannogo_slova.remove(chr(ord(bukva) - 32))
+                bukvi_zagadannogo_slova.remove(bukva)
+                for g in zagadannoe_slovo:                      
+                    if bukva == g:
+                        slovo += bukva
+                        schetchik += 1
+                    elif 1039 < ord(slovo_atalon[schetchik]) < 1104:
+                        slovo += (slovo_atalon[schetchik])
+                        schetchik += 1
+                    else:
+                        slovo += "*" 
+                        schetchik += 1    
+                slovo_atalon = slovo
+                slovo = ""
+            schetchik = 0
+            print(slovo_atalon)
+            if slovo_atalon == zagadannoe_slovo:
+                break
+            print("Твоя следующая догадка: ")
+            bukva = input()
+        ###ТЫ НЕ УГАДАЛ
+        else:
+            print(bukva)                                         
+            kolvo_popitok -= 1
+            if kolvo_popitok == 0:
+                break
+            print("Ага, не угадал! На один шаг ближе к победе!")
+            print("У тебя отсалось ", kolvo_popitok, " попыток.", sep="")
+            print(slovo_atalon)
+            print("Предположи букву: ")
+            bukva = input()                                  
+    ###ЕСЛИ БУКВА НЕ РУССКАЯ
+    else:
+            print(bukva)
+            print("Я же говорил ввести букву... А это что-то на непонятном мне языке.")
+            print("Дам тебе шанс исправить свою ошибку: ")
+            bukva = input()
+###ПОБЕДА
+if kolvo_popitok > 0:                                                 
+    print("Что?! Ты угадал?! НЕ МОЖЕТ ТАКОГО БЫТЬ!!!")
+    print("И У ТЕБЯ ОСТАЛОСЬ", kolvo_popitok, "ПОПЫТОК? Ты точно жульничал!")
+    print("Что? Жвачка? Какая жвачка? Ничего не знаю!")
+    print("Уходи с глаз долой!")
+###ПРОИГРЫШ
+else:
+    print("Ха - ха - ха! Я так и знал! НИКТО не сможет угадать это слово!")    
+    print("Теперь ты должен мне жвачку.")
+    print("Всмысле такого не было в правилах? Ты наверное не прочитал!!!")
+    print("Эй, ты куда?!")
+    print("Эх, еще один убежал...")
