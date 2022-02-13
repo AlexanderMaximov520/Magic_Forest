@@ -5,12 +5,12 @@ ugadat_slovo = "Я попробую угадать целое слово"
 itogovoe_slovo = ""
 schetchik_dva = 0
 ispolsovannie_bukvi = set()
-print("Привет, человек! Сыграй в мою игру ""Диковинный лес"". Сам придумал.")     
+print("Привет, человек! Сыграй в мою игру *Диковинный лес*. Сам придумал.")     
 print("Что? Просто так не хочешь играть? Ну, тогда сыграем на жвачку.")
 print("Я загадаю слово, а ты должен будешь его угадывать по букве.") 
 print("Или же,для тех кто любит рисковать, ты можешь попробовать угадать целое слово.")
 print("НО! Если ты не угадаешь, то ты ПРОИГРАЕШЬ!!!")
-print("В чем-то не разобрался? Напиши *", pomosch,"*, и я тебе подсоблю!", sep="")
+print("В чем-то не разобрался? Напиши *", pomosch,"*, и я тебе подсоблю! Звездочки я написал вместо кавычек.", sep="")
 print("За сколько попыток ты сможешь выиграть? Решать тебе: ")
 kolvo_popitok = int(input())
 print(kolvo_popitok)
@@ -117,8 +117,10 @@ while kolvo_popitok != 0 or slovo_atalon != zagadannoe_slovo:
             print(bukva)
             print("Так... Похоже, что ты угадал.")
             if 1039 < ord(bukva) < 1072:
+                ###ДОБАВЛЕНИЕ К ИСПОЛЬЗОВАННЫМ БУКВАМ
                 ispolsovannie_bukvi.add(bukva)
                 ispolsovannie_bukvi.add(chr(ord(bukva) + 32))
+                ###УДАЛЕНИЕ ИЗ МНОЖЕСТВА С БУКВАМИ ЗАГАДАННОГО СЛОВА
                 bukvi_zagadannogo_slova.remove(bukva)                  
                 bukvi_zagadannogo_slova.remove(chr(ord(bukva) + 32))
                 for j in zagadannoe_slovo:                      
@@ -134,8 +136,10 @@ while kolvo_popitok != 0 or slovo_atalon != zagadannoe_slovo:
                 slovo_atalon = slovo
                 slovo = ""
             else:
+                ###ДОБАВЛЕНИЕ К ИСПОЛЬЗОВАННЫМ БУКВАМ
                 ispolsovannie_bukvi.add(bukva)
                 ispolsovannie_bukvi.add((chr(ord(bukva) - 32)))
+                ###УДАЛЕНИЕ ИЗ МНОЖЕСТВА С БУКВАМИ ЗАГАДАННОГО СЛОВА
                 bukvi_zagadannogo_slova.remove(chr(ord(bukva) - 32))
                 bukvi_zagadannogo_slova.remove(bukva)
                 for g in zagadannoe_slovo:                      
@@ -159,6 +163,13 @@ while kolvo_popitok != 0 or slovo_atalon != zagadannoe_slovo:
         ###ТЫ НЕ УГАДАЛ
         else:
             print(bukva)                                         
+            ###ДОБАВЛЕНИЕ К ИСПОЛЬЗОВАННЫМ БУКВАМ
+            if 1039 < ord(bukva) < 1072:
+                ispolsovannie_bukvi.add(bukva)
+                ispolsovannie_bukvi.add(chr(ord(bukva) + 32))
+            else:
+                ispolsovannie_bukvi.add(bukva)
+                ispolsovannie_bukvi.add((chr(ord(bukva) - 32)))
             potracheno_popitok += 1
             if kolvo_popitok == potracheno_popitok:
                 break
@@ -173,8 +184,10 @@ while kolvo_popitok != 0 or slovo_atalon != zagadannoe_slovo:
             print("Я же говорил ввести букву... А это что-то на непонятном мне языке.")
             print("Дам тебе шанс исправить свою ошибку: ")
             bukva = input()
+###ЧТОБЫ НИЧЕГО НЕ ПЕЧАТОЛОСЬ ПРИ КОМАНДЕ *СДАТЬСЯ*
 if bukva == sdalsya:
     print("")
+###ЧТОБЫ НИЧЕГО НЕ ПЕЧАТОЛОСЬ ПРИ КОМАНДЕ *Я попробую угадать целое слово*
 elif bukva == "Я попробую угадать целое слово":
     print("")
 ###ПОБЕДА
@@ -187,6 +200,6 @@ elif potracheno_popitok < kolvo_popitok:
 else:
     print("Ха - ха - ха! Я так и знал! НИКТО не сможет угадать это слово!")    
     print("Теперь ты должен мне жвачку.")
-    print("Всмысле такого не было в правилах? Ты, наверное, не прочитал!!!")
+    print("Как это такого не было в правилах? Надо было слушать внимательно!!!")
     print("Эй, ты куда?!")
     print("Эх, еще один убежал...")
