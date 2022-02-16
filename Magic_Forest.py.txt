@@ -47,10 +47,6 @@ bukva = input()
 bukvi_zagadannogo_slova = set()
 ###СОЗДАНИЕ МНОЖЕСТВА С БУКВАМИ НИЖНЕГО И ВЕРХНЕГО РЕГИСТРА ЗАГАДАННОГО СЛОВА
 for i in zagadannoe_slovo:                           
-    if 64 < ord(i) < 91:                                       
-        bukvi_zagadannogo_slova.add(i)
-        bukvi_zagadannogo_slova.add(chr(ord(i) + 32))           
-    else:
         bukvi_zagadannogo_slova.add(i)
         bukvi_zagadannogo_slova.add(chr(ord(i) - 32))
 ###ОСНОВНОЙ ЦИКЛ
