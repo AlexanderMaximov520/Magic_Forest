@@ -1,8 +1,8 @@
-Magic Forest
+# Magic Forest
 
 "Magic Forest" is a game in which the program  comes up with a word and the user tries to guess it. The user enters the number of attempts to guess it. The hidden word is displayed on the screen, but instead of letters, special characters (asterisks). The user enters one letter at a time. If he entered a letter that is in the word, then he is notified and shown the place of the letter in the hidden word. If he did not guess correctly, then he is informed about this, and the number of attempts is reduced by one. When the user guesses the word, he is congratulated and the program shows how many attempts he has left.
 
-Game Features:
+# Game Features:
 
 1. Input is not case sensitive
 
