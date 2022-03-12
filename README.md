@@ -1,8 +1,30 @@
+# Magic Forest
+
+"Magic Forest" is a game in which the program  comes up with a word and the user tries to guess it. The user enters the number of attempts to guess it. The hidden word is displayed on the screen, but instead of letters, special characters (asterisks). The user enters one letter at a time. If he entered a letter that is in the word, then he is notified and shown the place of the letter in the hidden word. If he did not guess correctly, then he is informed about this, and the number of attempts is reduced by one. When the user guesses the word, he is congratulated and the program shows how many attempts he has left.
+
+Game Features:
+
+1. Input is not case sensitive
+
+2. If the user enters more than one letter or no letter, an error message is displayed
+
+3. If the user enters a letter that was previously used, a corresponding message is displayed
+
+4. The game continues until the word is guessed or the user gives up
+
+5. If the entered letter occurs more than once in a word, then all of them are revealed
+
+6. There are commands. To see a list of them, type "Help"
+
+7. Entering a whole word is not case sensitive
+
+8. The user can select a topic from the list for which the program will guess the word
+
 # Диковинный лес
 Диковинный лес - это игра, в которой программа загадывает слово, а пользователь пытается его угадать.
 В программе загадано слово. Пользователь вводит число попыток, за которое угадает его. На экран выводиться загаданное слово, но вместо букв специальные символы (звездочки). Пользователь вводит по одной букве. Если он ввел букву, которое есть в слове, то его уведомляют и показывают место буквы в загаданном слове. Если же он не угадал, то ему сообщают об этом, а число попыток уменьшается на одну. При угадывании слова пользователя поздравляют и указывает, сколько попыток у него осталось.
 
-# Особенности игры:
+Особенности игры:
 1) Ввод не чувствителен к регистру
 2) Если пользователь вводит больше одной буквы или не букву, выводится сообщение об ошибке
 3) Если пользователь вводит букву, которую ранее использовал, выводится соответствующее сообщение
@@ -12,7 +34,7 @@
 7) Ввод целого слова не чувствителен к регистру
 8) Пользователь может выбрать тему из списка, на которую программа загадет слово
 
-# Объяснение работы программы при угадывании буквы:
+Объяснение работы программы при угадывании буквы:
 
 Я постараюсь объяснить как работает система угадывания буквы (почти аналогично происходит с угадыванием всего слова). Изначально слово состоит из звездочек (это slovo-atalon, слово-эталон). Если буква есть в множестве букв с загаданными словами, начинается проверка на то, ввел ли пользователь большую букву или маленькую и т.п. Но я расскажу главное. Вот что происходит, когда пользователь первый раз угадал букву:
 
